@@ -133,7 +133,9 @@ class PlayerActivity : AppCompatActivity() {
             .setAllowCrossProtocolRedirects(true)
             .setConnectTimeoutMs(15_000)
             .setReadTimeoutMs(30_000)
-        val renderers = DefaultRenderersFactory(this).setEnableDecoderFallback(true)
+                val renderers = DefaultRenderersFactory(this)
+            .setEnableDecoderFallback(true)
+            .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_ON)
         val p = ExoPlayer.Builder(this, renderers)
             .setMediaSourceFactory(
                 DefaultMediaSourceFactory(this)
